@@ -1,4 +1,4 @@
-import { Box, Button, Center, Container, FormControl, FormLabel, Input, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { Button, Container, FormControl, FormLabel, Input, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
 
@@ -12,6 +12,49 @@ function App() {
       setPos(res.data.POS)
       console.log(pos)
     })
+  }
+
+  const dict ={
+    "CC":"coordinating conjunction",
+    "CD":"cardinal digit",
+    "DT": "determiner",
+    "EX":"existential",
+    "FW":"foreign word",
+    "IN": "preposition/subordinating conjunction",
+    "JJ" :"adjective 'big'",
+    "JJR" :"adjective, comparative 'bigger'",
+    "JJS": "adjective, superlative 'biggest'",
+    "LS" :"list marker ",
+    "MD": "modal ",
+    "NN": "noun, singular 'desk'",
+    "NNS": "noun plural 'desks'",
+    "NNP" :"proper noun, singular 'Harrison'",
+    "NNPS" :"proper noun, plural 'Americans'",
+    "PDT": "predeterminer 'all the kids'",
+    "POS": "possessive ending",
+    "PRP": "personal pronoun ",
+    "PRP$": "possessive pronoun ",
+    "RB" :"adverb ",
+    "RBR" :"adverb, comparative",
+    "RBS" :"adverb, superlative ",
+    "RP" :"particle ",
+    "TO":"to ",
+    "UH":"interjection" ,
+    "VB":"verb, base form take",
+    "VBD":"verb, past tense took",
+    "VBG":"verb, gerund/present participle taking",
+    "VBN":"verb, past participle taken",
+    "VBP":"verb, sing. present, non-3d take",
+    "VBZ":"verb, 3rd person sing. present takes",
+    "WDT":"wh-determiner which",
+    "WP":"wh-pronoun who, what",
+    "WP$":"possessive wh-pronoun whose",
+    "WRB":"wh-abverb where, when",
+    "SYM":"Symbol",
+    "VAUX":"Auxiliary Verb",
+    "VM":"Main Verb",
+    "DEM":"Demonstrative",
+    "QC":"Cardinal"
   }
 
   return (
@@ -37,7 +80,7 @@ function App() {
             {pos.map((elem,i)=>(
               <Tr key={i}>
                 <Td>{elem[0]}</Td>
-                <Td>{elem[1]}</Td>
+                <Td>{dict[elem[1]]?dict[elem[1]] : elem[1]}</Td>
               </Tr>
             ))}
             
