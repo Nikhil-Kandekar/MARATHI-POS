@@ -1,4 +1,4 @@
-import { Button, Container, FormControl, FormLabel, Input, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { Box, Button, Container, FormControl, FormLabel, Input, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
 
@@ -59,17 +59,21 @@ function App() {
 
   return (
     <div className="App">
-      <Container>       
+      <Container style={{"padding":"50px"}}>  
+      <Box boxShadow='dark-lg' p='6' rounded='md' bg='white' >   
       <FormControl isRequired>
-        <FormLabel htmlFor='first-name'>First name</FormLabel>
-        <Input id='first-name' placeholder='First name' onChange={(e)=>setSentence(e.target.value)}/>
+        <FormLabel htmlFor='first-name'>Marathi Sentence</FormLabel>
+        <Input style={{"margin-bottom":"16px"}} id='first-name' placeholder='Enter Marathi sentence' onChange={(e)=>setSentence(e.target.value)}/>
         <Button colorScheme='teal' variant='outline' onClick={handlesubmit}>
           Get POS
         </Button>
       </FormControl>
-      {pos.length>0 &&  
-      <TableContainer>
-        <Table variant='striped' colorScheme="blackAlpha" size='sm'>
+      </Box>
+      {pos.length>0 && 
+      <Box boxShadow='dark-lg' p='6' rounded='md' bg='white' marginTop="16px"> 
+       
+      <TableContainer >
+        <Table variant='striped' colorScheme="blackAlpha" size='sm' style={{"margin-top":"16px","border":"1px "}} >
           <Thead>
             <Tr>
               <Th>WORD</Th>
@@ -87,7 +91,8 @@ function App() {
           </Tbody>
         </Table>
       </TableContainer>  
-      } 
+       
+      </Box>} 
       </Container>
     </div>
   );
